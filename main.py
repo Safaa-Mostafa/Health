@@ -6,10 +6,7 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import MinMaxScaler
 import os
-import multiprocessing
 
-workers = (multiprocessing.cpu_count()) * 2 + 1
-threads = workers
 app = Flask(__name__)
 api = Api(app)
 model=pickle.load(open('model.pkl','rb'))
@@ -28,7 +25,11 @@ def convertTuple(tup):
     return str
 
 
-
+@app.route('/predictHeart',methods=['post'])
+def post():
+     return jsonify({
+           "predicted": "dkdk",
+          })
  
 @app.route('/predictHeart',methods=['post'])
 def post():
