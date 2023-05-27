@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 api = Api(app)
-model=pickle.load(open('model.pkl','rb'))
+model3=pickle.load(open('model.pkl','rb'))
 
 model2 = pickle.load(open('model2.pkl','rb'))
 dataset = pd.read_csv('diabetes.csv')
@@ -24,12 +24,6 @@ def convertTuple(tup):
         str = str + item
     return str
 
-
-@app.route('/predictHeaddrt',methods=['post'])
-def post():
-     return jsonify({
-           "predicted": "dkdk",
-          })
  
 @app.route('/predictHeart',methods=['post'])
 def post():
@@ -47,7 +41,7 @@ def post():
         slope = posted_data['slope']
         ca = posted_data['ca']
         thal = posted_data['thal']
-        prediction = model.predict([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
+        prediction = model3.predict([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
         if prediction == 1 :
          prediction_class_en = "You have heart disease, please consult a Doctor."
          prediction_class_ar = "لديك مرض القلب ، يرجى استشارة الطبيب"
