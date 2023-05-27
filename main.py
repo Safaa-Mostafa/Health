@@ -25,7 +25,7 @@ def convertTuple(tup):
     return str
 
 
-@app.route('/predictHeart',methods=['post'])
+@app.route('/predictHeaddrt',methods=['post'])
 def post():
      return jsonify({
            "predicted": "dkdk",
